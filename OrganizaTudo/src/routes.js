@@ -1,20 +1,34 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
+import Tabs from './tabs-routes';
 import Login from './paginas/Login';
-import NotasOffline from './paginas/NotasOffline';
-import NotasOnline from './paginas/NotasOnline';
-import Perfil from './paginas/Pefil';
 
-export default function Routes(){
+export default function Routes() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="NotasOnline" component={NotasOnline} />
-            <Stack.Screen name="NotasOffline" component={NotasOffline} />
-            <Stack.Screen name="Perfil" component={Perfil} />
+            <Stack.Screen name="Login" component={Login}
+                options={{
+                    headerShown: false
+                }}
+            />
+            <Stack.Screen name="Tabs" component={Tabs}
+                options={{
+                    headerShown: true,
+                    headerTitleStyle: {
+                        alignSelf: 'center'
+                    },
+                    title: 'ORGANIZATUDO',
+                    headerLeft: () => (
+                        <View />
+                    ), headerRight: () => (
+                        <View />
+                    )
+                }}
+            />
         </Stack.Navigator>
     );
 }
